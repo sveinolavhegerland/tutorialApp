@@ -1,1 +1,10 @@
-/* Add mobile styles for the component here.  */
+
+.standard {
+    background-color: blue;
+    color: white;
+}
+
+.highlighted {
+    background-color: red;
+    color: white;
+}

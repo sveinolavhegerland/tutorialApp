@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./today.component.css']
 })
 export class TodayComponent implements OnInit {
+  isHighlighted = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onDemo(){
+    this.isHighlighted = !this.isHighlighted;
   }
 
 }
