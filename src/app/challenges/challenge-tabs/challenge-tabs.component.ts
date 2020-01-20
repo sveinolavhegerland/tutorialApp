@@ -1,31 +1,64 @@
+// import { Component, OnInit } from '@angular/core';
+// import { RouterExtensions } from 'nativescript-angular/router';
+// import { ActivatedRoute } from '@angular/router';
+// import { Page } from 'tns-core-modules/ui/page/page';
+
+// @Component({
+//   selector: 'ns-challenge-tabs',
+//   templateUrl: './challenge-tabs.component.html',
+//   styleUrls: ['./challenge-tabs.component.css']
+// })
+// export class ChallengeTabsComponent implements OnInit {
+
+//   constructor(
+//       private router: RouterExtensions,
+//       private active: ActivatedRoute,
+//       private page: Page
+//       ) { }
+
+//   ngOnInit() {
+//       this.router.navigate([
+//         {
+//           outlets: {currentChallenge: ['current-challenge'], today: ['today']}
+//         }
+//       ],
+//       {
+//         relativeTo: this.active
+//       }
+//     );
+//       this.page.actionBarHidden = true;
+//   }
+// }
+
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Page } from 'tns-core-modules/ui/page/page';
+import { RouterExtensions } from 'nativescript-angular/router';
+import { Page } from 'tns-core-modules/ui/page';
 
 @Component({
   selector: 'ns-challenge-tabs',
   templateUrl: './challenge-tabs.component.html',
-  styleUrls: ['./challenge-tabs.component.css']
+  styleUrls: ['./challenge-tabs.component.css'],
+  moduleId: module.id
 })
 export class ChallengeTabsComponent implements OnInit {
-
   constructor(
-      private router: RouterExtensions,
-      private active: ActivatedRoute,
-      private page: Page
-      ) { }
+    private router: RouterExtensions,
+    private active: ActivatedRoute,
+    private page: Page
+  ) {}
 
   ngOnInit() {
-      this.router.navigate([
+    this.router.navigate(
+      [
         {
-          outlets: {currentChallenge: ['current-challenge'], today: ['today']}
+          outlets: { currentChallenge: ['current-challenge'], today: ['today'] }
         }
       ],
       {
         relativeTo: this.active
       }
     );
-    //   this.page.actionBarHidden = true;
+    this.page.actionBarHidden = true;
   }
 }
