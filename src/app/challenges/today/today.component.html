@@ -1,5 +1,6 @@
 <ns-action-bar title="Today's Challenge" [showBackButton]="false"></ns-action-bar>
-<StackLayout>
-    <Label class="h1" text="Today!"></Label>
-    <Button class="standard" text="Click me!" (tap)="onDemo()" [ngClass]="{highlighted : isHighlighted}"></Button>
-</StackLayout>
+<FlexboxLayout>
+<Button class="btn btn-success" text="Completed"></Button>
+<Button class="btn btn-fail" text="Failed"></Button >
+<Button class="btn btn-flat" text="Reset"></Button>
+</FlexboxLayout>

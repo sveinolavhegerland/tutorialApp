@@ -1,0 +1,69 @@
+// @import "~@nativescript/theme/css/core.css";
+// @import "~@nativescript/theme/css/default.css";
+
+/* Colors */
+
+
+
+/* The variables are loaded before the Core styles */
+
+
+@import "~@nativescript/theme/core";
+@import "~@nativescript/theme/blue"; // Or any other color theme (default === blue)
+
+@import './theme/colors';
+
+$btn-color: $primary;
+
+// @import '~@nativescript/theme/index';
+
+ActionBar {
+    background: lighten($primary, 0);
+    color: white;
+}
+
+.form {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-field {
+    width: 80%;
+
+    .label {
+        color: $primary;
+        font-weight: bold;
+    }
+
+    .input {
+        border-bottom-width: 2;
+        border-color: black;
+        width: 100%;
+    }
+}
+
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
+
+// .for-control {
+//     border-bottom-color: purple;
+//     border-bottom-width: 2;
+//     margin: 5 0;
+//     font-size: 20;
+//     padding: 8 4;
+// }
+
+.drawer-container {
+    background:  linear-gradient(140deg, #2b072c, #5c3fa0);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20;
+}
+
+
+.h1 {
+    font-weight: bold;
+    color: $primary;
+}

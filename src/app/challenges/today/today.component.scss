@@ -1,0 +1,38 @@
+
+@import '../../../theme/colors';
+
+FlexboxLayout {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 300;
+}
+
+.btn-success {
+    background: $success;
+    border-color: $success;
+    color: white;
+}
+
+.btn-fail {
+    background: $fail;
+    border-color: $fail;
+    color: white;
+}
+
+.btn-flat {
+    background: transparent;
+    border-color: transparent;
+    border-width: 1;
+    color: $primary;
+}
+
+.btn-flat {
+    background: transparent;
+    border-color: transparent;
+    border-width: 1;
+    color: $primary;
+}
