@@ -1,3 +1,5 @@
+@import "../../../theme/colors";
+
 .title {
     font-size: 26;
     text-align: center;
@@ -10,4 +12,38 @@
     justify-content: center;
     align-items: center;
     margin: 20;
+}
+
+.week-day-label {
+    margin: 15 0;
+    color: $secondary;
+    font-weight: bold;
+}
+
+.day {
+    justify-content: center;
+    align-items: center;
+    width: 50;
+    height: 50;
+    margin: 10;
+    border-color: $primary;
+    border-width: 1;
+    border-radius: 50;
+    color: $primary;
+}
+
+.completed{
+    background: $success;
+    color: white;
+}
+
+.failed {
+    background:  $fail;
+    color: white;
+}
+
+.not-settable {
+    background: #ccc;
+    color: #3f3c3c;
+
 }

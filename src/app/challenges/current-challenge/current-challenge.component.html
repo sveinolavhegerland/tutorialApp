@@ -12,16 +12,24 @@
     </StackLayout>
     <GridLayout rows="auto,*,*,*,*,*,*" columns="*,*,*,*,*,*,*">
       <Label
-      class="text-center"
+      class="text-center week-day-label"
       width="100%"
       *ngFor="let weekDay of weekDays; let i = index"
       [text]="weekDay"
       row="0"
       [col]="i"
       ></Label>
-      <Label width="50" height="50" *ngFor="let day of days; let i = index" [text]="day.dayInMonth" [row]="getRow(i, day)" [col]="day.dayInWeek">
-
-      </Label>
+      <FlexboxLayout
+      class="day not-settable"
+      *ngFor="let day of days; let i = index"
+      [row]="getRow(i, day)"
+      [col]="day.dayInWeek"
+      (tap)="onChangeStatus()"
+      >
+        <Label
+        [text]="day.dayInMonth"
+        ></Label>
+      </FlexboxLayout>
     </GridLayout>
 
 </FlexboxLayout>
