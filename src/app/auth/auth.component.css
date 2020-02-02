@@ -1,1 +1,10 @@
 /* Add mobile styles for the component here.  */
+
+.myButton {
+
+
+    border-color: transparent;
+    border-width: 1;
+    border-radius: 30;
+    width: 100%;
+}

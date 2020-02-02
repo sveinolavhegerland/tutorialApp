@@ -1,8 +1,11 @@
-import { Component, ViewContainerRef, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 import { DayModalComponent } from '../day-modal/day-modal.component';
 import { UIService } from '~/app/shared/ui.service';
+import { ChallengeService } from '../challenge.service';
+import { Challenge } from '../challenge.model';
+import { Subscription } from 'rxjs';
 
 
 
@@ -11,23 +14,28 @@ import { UIService } from '~/app/shared/ui.service';
   templateUrl: './current-challenge.component.html',
   styleUrls: ['./_current-challenge.component.common.scss']
 })
-export class CurrentChallengeComponent implements OnInit{
+export class CurrentChallengeComponent implements OnInit, OnDestroy{
     weekDays = ['S', 'M', 'T', 'W', 'T','F','S'];
-    days: {dayInMonth: number, dayInWeek: number}[] = [];
-    private currentMonth: number;
-    private currentYear: number;
+    currentChallenge: Challenge;
 
-    constructor(private router: RouterExtensions, private modalDialog: ModalDialogService, private vcRef: ViewContainerRef, private uiService: UIService){}
+    private curChallengeSub: Subscription;
+
+    constructor(
+        private router: RouterExtensions,
+        private modalDialog: ModalDialogService,
+        private vcRef: ViewContainerRef,
+        private uiService: UIService,
+        private challengeService: ChallengeService){}
 
     ngOnInit(){
-         this.currentYear = new Date().getFullYear()
-         this.currentMonth = new Date().getMonth();
-         const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
+         this.curChallengeSub = this.challengeService.currentChallenge.subscribe(challenge => {
+            this.currentChallenge = challenge;
+         });
+    }
 
-        for (let i = 1; i < daysInMonth + 1; i++){
-            const date = new Date(this.currentYear, this.currentMonth, i)
-            const dayInWeek = date.getDay();
-            this.days.push({dayInMonth: i, dayInWeek: dayInWeek})
+    ngOnDestroy(){
+        if (this.curChallengeSub){
+            this.curChallengeSub.unsubscribe();
         }
     }
 
@@ -42,7 +50,7 @@ export class CurrentChallengeComponent implements OnInit{
     getRow(index: number, day: {dayInMonth: number, dayInWeek: number}){
         const startRow = 1;
         const weekRow = Math.floor(index / 7);
-        const firstWeekdayOfMonth = new Date(this.currentYear,this.currentMonth,1).getDay();
+        const firstWeekdayOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(),1).getDay();
         const irregularRow = day.dayInWeek < firstWeekdayOfMonth ? 1 : 0;
         return startRow + weekRow + irregularRow;
     }
