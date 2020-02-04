@@ -6,7 +6,7 @@
         class="input"
         returnKeyType="next"
         required
-        ngModel
+        [(ngModel)] ="title"
         #textCtrl = "ngModel"
         ></TextField>
         <Label *ngIf="!textCtrl.valid && textCtrl.touched" text="Please enter a valid title."></Label>
@@ -17,7 +17,7 @@
         class="input"
         returnKeyType="done"
         required
-        ngModel
+        [(ngModel)] ="description"
         #textCtrl2 = "ngModel"
         ></TextView>
         <Label *ngIf="!textCtrl2.valid && textCtrl2.touched" text="Please enter a valid description."></Label>

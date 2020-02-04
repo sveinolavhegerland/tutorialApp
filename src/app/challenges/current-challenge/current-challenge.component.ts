@@ -6,6 +6,7 @@ import { UIService } from '~/app/shared/ui.service';
 import { ChallengeService } from '../challenge.service';
 import { Challenge } from '../challenge.model';
 import { Subscription } from 'rxjs';
+import { Day, DayStatus } from '../day.model';
 
 
 
@@ -55,16 +56,23 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy{
         return startRow + weekRow + irregularRow;
     }
 
-    onChangeStatus(){
+    onChangeStatus(day: Day){
+        if (!this.getIsSettable(day.dayInMonth)){
+            return;
+        }
         this.modalDialog.showModal(DayModalComponent, {
             fullscreen: true,
             viewContainerRef: this.uiService.getRootVCRef()
             ? this.uiService.getRootVCRef()
             : this.vcRef,
-            context: {date: new Date()}
-        }).then((action: String) => {
-            console.log(action);
+            context: {date: day.date, status: day.status}
+        }).then((status: DayStatus) => {
+            this.challengeService.updateDayStatus(day.dayInMonth, status)
         });
+    }
+
+    getIsSettable(dayInMonth:number){
+        return dayInMonth <= new Date().getDate();
     }
 
 

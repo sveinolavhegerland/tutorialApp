@@ -13,15 +13,24 @@ FlexboxLayout {
 }
 
 .btn-success {
-    background: $success;
+    background-color: $success;
     border-color: $success;
+    border-width: 1;
     color: white;
 }
 
 .btn-fail {
-    background: $fail;
+    background-color: $fail;
     border-color: $fail;
+    border-width: 1;
     color: white;
+}
+
+.btn-success:disabled,
+.btn-fail:disabled {
+    background: rgb(211, 202, 202);
+    color: gray;
+    border-color: rgb(211, 202, 202);
 }
 
 .btn-flat {

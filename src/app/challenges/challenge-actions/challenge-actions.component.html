@@ -1,5 +1,5 @@
 <FlexboxLayout>
-    <Button height="60" class="btn btn-success" text="Completed" (tap)="onAction('complete')" *ngIf="action!== 'complete'"></Button>
+    <Button height="60" class="btn btn-success" text="Completed" (tap)="onAction('complete')" *ngIf="action!== 'complete'" [isEnabled] ="!done"></Button>
     <StackLayout height="60" class="btn btn-success" *ngIf="action==='complete'">
         <Label
             text="&#xf00c;"
@@ -8,7 +8,7 @@
             class="fa btn-alt animate-button"
         ></Label>
     </StackLayout>
-    <Button class="btn btn-fail" text="Failed" (tap)="onAction('fail')" *ngIf="action!== 'fail'"></Button >
+    <Button class="btn btn-fail" text="Failed" (tap)="onAction('fail')" *ngIf="action!== 'fail'" [isEnabled] ="!done"></Button >
         <StackLayout height="60" class="btn btn-fail" *ngIf="action==='fail'">
             <Label
                 text="&#xf00d;"
@@ -17,5 +17,5 @@
                 class="fa btn-alt animate-button"
             ></Label>
         </StackLayout>
-    <Button class="btn btn-flat" [text]="cancelText" (tap)="onAction('cancel')"></Button>
+    <Button class="btn btn-flat" [text]="cancelText" (tap)="onAction('cancel')" [isEnabled] ="!done"></Button>
 </FlexboxLayout>

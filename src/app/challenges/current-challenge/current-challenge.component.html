@@ -1,8 +1,26 @@
 <ns-action-bar title="Current Challenge">
-    <ActionItem><Label ios.position = "right" android.position="actionBar"
-        (tap)="onAdd()" text="&#xf0fe;" class="fa p-10" fontSize="24"></Label></ActionItem>
-          <ActionItem><Label ios.position = "right" android.position="actionBar"
-        (tap)="onEdit()" text="&#xf044;" class="fa p-10" fontSize="24"></Label></ActionItem>
+    <ActionItem>
+      <Label
+        ios.position = "right"
+        android.position="actionBar"
+        (tap)="onAdd()"
+        text="&#xf0fe;"
+        class="fa p-10"
+        fontSize="24"
+      ></Label>
+    </ActionItem>
+    <ActionItem>
+      <Label
+        ios.position = "right"
+        android.position="actionBar"
+        (tap)="onEdit()"
+        text="&#xf044;"
+        class="fa p-10"
+        fontSize="24"
+        *ngIf="currentChallenge"
+      ></Label>
+    </ActionItem
+    >
 </ns-action-bar>
 <ScrollView>
 <FlexboxLayout class="page">
@@ -24,11 +42,12 @@
       [col]="i"
       ></Label>
       <FlexboxLayout
-      class="day not-settable"
+      class="day"
+      [ngClass]="{'not-settable': !getIsSettable(day.dayInMonth), completed: day.status === 1, failed: day.status === 2}"
       *ngFor="let day of currentChallenge.days; let i = index"
       [row]="getRow(i, day)"
       [col]="day.dayInWeek"
-      (tap)="onChangeStatus()"
+      (tap)="onChangeStatus(day)"
       >
         <Label
         [text]="day.dayInMonth"
